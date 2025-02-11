@@ -1,0 +1,102 @@
+"use strict";
+
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkInsert("Sessions", [
+      {
+        therapistId: 1,
+        clientId: null,
+        startTime: new Date("2025-02-01 10:00:00"),
+        endTime: new Date("2025-02-01 11:00:00"),
+        status: "available",
+        notes: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 1,
+        clientId: null,
+        startTime: new Date("2025-03-01 11:00:00"),
+        endTime: new Date("2025-03-01 12:00:00"),
+        status: "available",
+        notes: "clinet x canceled this precious session, so avaialble now",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 1,
+        clientId: 3,
+        startTime: new Date("2025-02-01 11:00:00"),
+        endTime: new Date("2025-02-01 12:00:00"),
+        status: "completed",
+        notes: "it was one hell of a session",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 1,
+        clientId: 3,
+        startTime: new Date("2025-01-07 10:00:00"),
+        endTime: new Date("2025-01-07 11:00:00"),
+        status: "scheduled",
+        notes: "First consultation session with client 3",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 1,
+        clientId: 3,
+        startTime: new Date("2025-06-08 14:00:00"),
+        endTime: new Date("2025-06-08 15:00:00"),
+        status: "scheduled",
+        notes: "Another consultation session",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 1,
+        clientId: null,
+        startTime: new Date("2025-03-05 10:00:00"),
+        endTime: new Date("2025-03-05 11:00:00"),
+        status: "available",
+        notes: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 1,
+        clientId: 3,
+        startTime: new Date("2025-01-08 14:00:00"),
+        endTime: new Date("2025-01-08 15:00:00"),
+        status: "completed",
+        notes: "Follow-up session",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 1,
+        clientId: null,
+        startTime: new Date("2025-05-08 14:00:00"),
+        endTime: new Date("2025-05-08 15:00:00"),
+        status: "available",
+        notes: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        therapistId: 2,
+        clientId: null,
+        startTime: new Date("2025-05-08 14:00:00"),
+        endTime: new Date("2025-05-08 15:00:00"),
+        status: "available",
+        notes: null,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+  },
+
+  down: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete("Sessions", null, {});
+  },
+};
