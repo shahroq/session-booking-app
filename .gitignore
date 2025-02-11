@@ -25,3 +25,4 @@ dist-ssr
 
 # db
 api/data/database_development.sqlite
+*.env
