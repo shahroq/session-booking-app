@@ -69,6 +69,10 @@ cd session-app
 # Install dependencies
 npm i
 
+# go to api directori, and install backend dependencies
+cd api
+npm i
+
 # Copy the sample.env file to create a .env file, and tweak the values if needed
 cp sample.env .env
 
@@ -80,8 +84,8 @@ npx sequelize-cli db:seed:all
 cd api
 npm start
 
-# Run the frontend app (on a separate terminal)
-cd ..
+# go to root in a separate terminal, & run the frontend app
+cd .. # if not in the root
 npm run dev
 ```
 
