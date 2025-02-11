@@ -31,7 +31,7 @@ This project is built using Vite, React, Tailwind CSS, Axios, and React Router. 
 
 - **Session Management:**
 
-  - Sessions have statuses such as `available`, `booked`, and `completed`.
+  - Sessions have statuses such as `available`, `scheduled`, and `completed`.
   - Therapists can delete sessions that are available (i.e., unbooked).
 
 - **Responsive UI:**
