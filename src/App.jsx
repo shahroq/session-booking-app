@@ -4,24 +4,20 @@ import Layout from "./pages/Layout";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import Error404 from "./pages/Error404";
+import Error from "./pages/Error";
 
 const routerDefinitions = [
   {
     path: "/",
     element: <Layout />,
-    errorElement: <Error404 />,
+    errorElement: <Error />,
     children: [
       { index: true, element: <Navigate to="/login" replace /> },
-      { path: "login", element: <Login /> },
-      { path: "register", element: <Registration /> },
+      { path: "/login", element: <Login /> },
+      { path: "/register", element: <Registration /> },
       {
-        element: <ProtectedRoute roles={["therapist"]} />,
-        children: [{ path: "therapist", element: <Dashboard /> }],
-      },
-      {
-        element: <ProtectedRoute roles={["client"]} />,
-        children: [{ path: "client", element: <Dashboard /> }],
+        element: <ProtectedRoute roles={["therapist", "client"]} />,
+        children: [{ path: "/dashboard", element: <Dashboard /> }],
       },
     ],
   },

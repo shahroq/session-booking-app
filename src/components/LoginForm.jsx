@@ -1,5 +1,4 @@
-// src/components/LoginForm.jsx
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { signinUser } from "../services/api";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router";
@@ -27,11 +26,12 @@ export default function LoginForm() {
       // Save user data in context
       login(result);
       // Redirect based on role
-      if (result.role === "therapist") {
-        navigate("/therapist");
-      } else {
-        navigate("/client");
-      }
+      // if (result.role === "therapist") {
+      //   navigate("/therapist");
+      // } else {
+      //   navigate("/client");
+      // }
+      navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error);
       setError("Invalid email or password. Please try again.");

@@ -13,6 +13,10 @@ export default function Navbar() {
     setIsOpen(false); // Close mobile menu if open
   };
 
+  const dashboardTitle = `Dashboard (${
+    user?.role === "therapist" ? "Therapist" : "Client"
+  })`;
+
   return (
     <nav
       className={
@@ -25,7 +29,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo / Title */}
-          <Link to="/" className="text-lg font-bold">
+          <Link to="/dashboard" className="text-lg font-bold">
             Session App
           </Link>
 
@@ -34,15 +38,11 @@ export default function Navbar() {
             {user ? (
               <>
                 <span className="mr-4">Hello, {user["name"]}</span>
-                {user.role === "therapist" ? (
-                  <Link to="/therapist" className="mr-4 hover:underline">
-                    Therapist Dashboard
-                  </Link>
-                ) : (
-                  <Link to="/client" className="mr-4 hover:underline">
-                    Client Dashboard
-                  </Link>
-                )}
+
+                <Link to="/dashboard" className="mr-4 hover:underline">
+                  {dashboardTitle}
+                </Link>
+
                 <button
                   onClick={handleLogout}
                   className="bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition"
@@ -121,23 +121,15 @@ export default function Navbar() {
                 <span className="block px-3 py-2 rounded-md text-base font-medium">
                   Hello, {user["name"]}
                 </span>
-                {user.role === "therapist" ? (
-                  <Link
-                    to="/therapist"
-                    onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 rounded-md text-base font-medium hover:underline"
-                  >
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link
-                    to="/client"
-                    onClick={() => setIsOpen(false)}
-                    className="block px-3 py-2 rounded-md text-base font-medium hover:underline"
-                  >
-                    Dashboard
-                  </Link>
-                )}
+
+                <Link
+                  to="/dashboard"
+                  onClick={() => setIsOpen(false)}
+                  className="block px-3 py-2 rounded-md text-base font-medium hover:underline"
+                >
+                  {dashboardTitle}
+                </Link>
+
                 <button
                   onClick={handleLogout}
                   className="block w-full text-left px-3 py-2 rounded-md text-base font-medium bg-red-500 hover:bg-red-600 transition"
