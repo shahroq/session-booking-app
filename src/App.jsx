@@ -3,8 +3,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./pages/Layout";
 import Registration from "./pages/Registration";
 import Login from "./pages/Login";
-import TherapistDashboard from "./pages/TherapistDashboard";
-import ClientDashboard from "./pages/ClientDashboard";
+import Dashboard from "./pages/Dashboard";
 import Error404 from "./pages/Error404";
 
 const routerDefinitions = [
@@ -18,11 +17,11 @@ const routerDefinitions = [
       { path: "register", element: <Registration /> },
       {
         element: <ProtectedRoute roles={["therapist"]} />,
-        children: [{ path: "therapist", element: <TherapistDashboard /> }],
+        children: [{ path: "therapist", element: <Dashboard /> }],
       },
       {
         element: <ProtectedRoute roles={["client"]} />,
-        children: [{ path: "client", element: <ClientDashboard /> }],
+        children: [{ path: "client", element: <Dashboard /> }],
       },
     ],
   },
