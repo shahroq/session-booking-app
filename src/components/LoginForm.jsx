@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react";
 import { signinUser } from "../services/api";
 import { AuthContext } from "../contexts/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import InputGroup from "./utils/InputGroup";
 import Button from "./utils/Button";

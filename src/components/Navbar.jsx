@@ -1,6 +1,5 @@
-// src/components/Navbar.jsx
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../contexts/AuthContext";
 
 export default function Navbar() {
@@ -56,7 +55,7 @@ export default function Navbar() {
                 <Link to="/login" className="mr-4 hover:underline">
                   Login
                 </Link>
-                <Link to="/" className="mr-4 hover:underline">
+                <Link to="/register" className="mr-4 hover:underline">
                   Register
                 </Link>
               </>
@@ -156,7 +155,7 @@ export default function Navbar() {
                   Login
                 </Link>
                 <Link
-                  to="/"
+                  to="/register"
                   onClick={() => setIsOpen(false)}
                   className="block px-3 py-2 rounded-md text-base font-medium hover:underline"
                 >

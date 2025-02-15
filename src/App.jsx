@@ -1,35 +1,37 @@
-// src/App.jsx
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./pages/Layout";
 import RegistrationPage from "./pages/RegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import TherapistDashboard from "./pages/TherapistDashboard";
 import ClientDashboard from "./pages/ClientDashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-import Navbar from "./components/Navbar";
+import Error404 from "./pages/Error404";
+
+const routerDefinitions = [
+  {
+    path: "/",
+    element: <Layout />,
+    errorElement: <Error404 />,
+    children: [
+      { index: true, element: <Navigate to="/login" replace /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "register", element: <RegistrationPage /> },
+      {
+        element: <ProtectedRoute roles={["therapist"]} />,
+        children: [{ path: "therapist", element: <TherapistDashboard /> }],
+      },
+      {
+        element: <ProtectedRoute roles={["client"]} />,
+        children: [{ path: "client", element: <ClientDashboard /> }],
+      },
+    ],
+  },
+];
+
+const router = createBrowserRouter(routerDefinitions);
 
 function App() {
-  return (
-    <Router>
-      {/* Global Navigation */}
-      <Navbar />
-      <Routes>
-        {/* Public Routes */}
-        <Route path="/" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
-
-        {/* Protected Routes for Therapists */}
-        <Route element={<ProtectedRoute roles={["therapist"]} />}>
-          <Route path="/therapist" element={<TherapistDashboard />} />
-        </Route>
-
-        {/* Protected Routes for Clients */}
-        <Route element={<ProtectedRoute roles={["client"]} />}>
-          <Route path="/client" element={<ClientDashboard />} />
-        </Route>
-      </Routes>
-    </Router>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
