@@ -1,8 +1,8 @@
 import { createBrowserRouter, Navigate, RouterProvider } from "react-router";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./pages/Layout";
-import RegistrationPage from "./pages/RegistrationPage";
-import LoginPage from "./pages/LoginPage";
+import Registration from "./pages/Registration";
+import Login from "./pages/Login";
 import TherapistDashboard from "./pages/TherapistDashboard";
 import ClientDashboard from "./pages/ClientDashboard";
 import Error404 from "./pages/Error404";
@@ -14,8 +14,8 @@ const routerDefinitions = [
     errorElement: <Error404 />,
     children: [
       { index: true, element: <Navigate to="/login" replace /> },
-      { path: "login", element: <LoginPage /> },
-      { path: "register", element: <RegistrationPage /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Registration /> },
       {
         element: <ProtectedRoute roles={["therapist"]} />,
         children: [{ path: "therapist", element: <TherapistDashboard /> }],
