@@ -6,6 +6,7 @@ import {
   updateSessionStatus,
 } from "../services/api";
 import SessionList from "../components/SessionList";
+import Session from "../components/Session";
 import Alert from "../components/utils/Alert";
 
 export default function TherapistDashboard() {
@@ -87,12 +88,16 @@ export default function TherapistDashboard() {
         </Alert>
       )}
 
-      <SessionList
-        title="List of sessions"
-        sessions={sessions}
-        onDelete={handleDelete}
-        onStatusChange={handleStatusChange}
-      />
+      <SessionList title="List of sessions">
+        {sessions.map((session) => (
+          <Session
+            key={session.id}
+            session={session}
+            onDelete={handleDelete}
+            onStatusChange={handleStatusChange}
+          />
+        ))}
+      </SessionList>
     </div>
   );
 }
